@@ -3,14 +3,15 @@ import Container from 'react-bootstrap/Container';
 import { students } from '../students';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 class SingleStudentDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
             studentsData: students,
-            studentName: this.props.match.params.studentName,
-            student: null
+            student: null,
+            studentIndex: null
         }
     }
 
@@ -20,8 +21,23 @@ class SingleStudentDetails extends Component {
 
     getData()
     {
+        let studentName = this.props.match.params.studentName;
         this.setState ({
-            student: this.state.studentsData.find(student=>student.name===this.state.studentName)
+            studentIndex: this.state.studentsData.findIndex(student=>student.name===studentName),
+            student: this.state.studentsData.find(student=>student.name===studentName),
+        })
+    }
+
+    updateData()
+    {
+        students[this.state.studentIndex] = {
+            "name": "Siya",
+            "age": 20,
+            "address": "Donec nulla sem, semper ac lacinia ac, viverra sed lectus",
+            "phone": 7263767318
+        }
+        this.setState ({
+            student: students[this.state.studentIndex],
         })
     }
 
@@ -63,6 +79,7 @@ class SingleStudentDetails extends Component {
                         </Col>
                     </Row>
                 </Container>
+                <Button onClick = {() => this.updateData()}>Update</Button>
             </Container>
         );
     }

@@ -39,21 +39,21 @@ class StudentTable extends Component {
                         </h2>
                     </Col>
                  </Row>
-            <Container className="table-body">
-                <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Address</th>
-                        <th>Phone Number</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {students}
-                    </tbody>
-                </Table>
-            </Container>
+                <Container className="table-body">
+                    <Table striped bordered hover>
+                        <thead>
+                            <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Address</th>
+                            <th>Phone Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {students}
+                        </tbody>
+                    </Table>
+                </Container>
             </Container>
         );
     }
