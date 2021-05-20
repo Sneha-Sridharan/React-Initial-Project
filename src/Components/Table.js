@@ -13,10 +13,15 @@ class StudentTable extends Component {
         };
     }
 
+    routeToSingleStudentPage(student){
+        let x =  '/student/' + student.name;
+        this.props.history.push(x);
+    }
+
     render() {
         const students = this.state.studentsData.map((student) => {
             return (
-                <tr onClick={() => this.selectStudent(student)}>
+                <tr onClick={() => this.routeToSingleStudentPage(student)}>
                     <td>{student.name}</td>
                     <td>{student.age}</td>
                     <td>{student.address}</td>
