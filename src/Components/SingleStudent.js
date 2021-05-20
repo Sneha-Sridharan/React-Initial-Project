@@ -39,22 +39,26 @@ class SingleStudentDetails extends Component {
                     <Row className="pt-10">
                         <Col xs={12} md={12} className="text-align-left">
                             <div  className="font-size-sm">
-                                {this.state.student ? this.state.student.name : ''}
+                                Name: 
+                                {this.state.student ? ' '+this.state.student.name : ''}
                             </div>
                         </Col>
                         <Col xs={12} md={12} className="text-align-left">
                             <div  className="font-size-sm">
-                                {this.state.student ? this.state.student.age : ''}
+                                Age:  
+                                {this.state.student ? ' '+this.state.student.age : ''}
                             </div>
                         </Col>
                         <Col xs={12} md={12} className="text-align-left">
                             <div  className="font-size-sm">
-                                {this.state.student ? this.state.student.address : ''}
+                                Address: 
+                                {this.state.student ? ' '+this.state.student.address : ''}
                             </div>
                         </Col>
                         <Col xs={12} md={12} className="text-align-left">
                             <div  className="font-size-sm">
-                                {this.state.student ? this.state.student.phone : ''}
+                                Phone Number: 
+                                {this.state.student ? ' '+this.state.student.phone : ''}
                             </div>
                         </Col>
                     </Row>
