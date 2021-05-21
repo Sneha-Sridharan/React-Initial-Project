@@ -14,7 +14,7 @@ class StudentTable extends Component {
     }
 
     routeToSingleStudentPage(student){
-        let x =  '/student/' + student.name;
+        let x =  '/student/' + student.id;
         this.props.history.push(x);
     }
 
@@ -31,7 +31,7 @@ class StudentTable extends Component {
         });
 
         return (
-            <Container className="header">
+            <Container className="centerbody">
                 <Row>
                     <Col xs={12} md={12}  className="mt-5">
                         <h2 className="bold">
@@ -39,7 +39,7 @@ class StudentTable extends Component {
                         </h2>
                     </Col>
                  </Row>
-                <Container className="table-body">
+                <Container className="margins">
                     <Table striped bordered hover>
                         <thead>
                             <tr>

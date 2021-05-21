@@ -2,6 +2,7 @@ import './App.css';
 import React, { Component } from 'react';
 import StudentTable from './Components/Table';
 import SingleStudentDetails from './Components/SingleStudent';
+import UpdateDetails from './Components/Update';
 import { Route, HashRouter, Switch} from "react-router-dom";
 
 class App extends Component {
@@ -11,7 +12,8 @@ class App extends Component {
            <HashRouter>
             <Switch>
                 <Route exact path="/" component={StudentTable} />
-                <Route path={"/student/:studentName"} exact component={SingleStudentDetails}/>
+                <Route path={"/student/:studentId"} exact component={SingleStudentDetails}/>
+                <Route path={"/update/:studentId"} exact component={UpdateDetails}/>
                 <Route path="*" component={() => "404 NOT FOUND"} />
               </Switch>
            </HashRouter>

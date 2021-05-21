@@ -11,7 +11,6 @@ class SingleStudentDetails extends Component {
         this.state = {
             studentsData: students,
             student: null,
-            studentIndex: null
         }
     }
 
@@ -19,68 +18,76 @@ class SingleStudentDetails extends Component {
         this.getData()
     }
 
+// localstorage.getItem
+// localstorage.setItem
+// localstorage.removeItem
+// JSON.stringfy()
+// JSON.parse()
+
+
     getData()
     {
-        let studentName = this.props.match.params.studentName;
-        this.setState ({
-            studentIndex: this.state.studentsData.findIndex(student=>student.name===studentName),
-            student: this.state.studentsData.find(student=>student.name===studentName),
+        const that = this;
+        // eslint-disable-next-line
+        this.state.studentsData.map(elem => {
+            if(elem.id ===  parseInt(that.props.match.params.studentId)){
+                that.setState({
+                    student: elem
+                })
+            }
         })
     }
 
-    updateData()
-    {
-        students[this.state.studentIndex] = {
-            "name": "Siya",
-            "age": 20,
-            "address": "Donec nulla sem, semper ac lacinia ac, viverra sed lectus",
-            "phone": 7263767318
-        }
-        this.setState ({
-            student: students[this.state.studentIndex],
-        })
+    routeToUpdatePage(id){
+        let x =  '/update/' + id;
+        this.props.history.push(x);
     }
 
     render() {
         return (
-            <Container className="header">
-                <Row>
-                    <Col xs={12} md={12}  className="mt-5">
-                        <h2 className="bold">
-                            {this.state.student ? this.state.student.name : ''}
-                        </h2>
-                    </Col>
-                 </Row>
-                <Container className="table-body">
-                    <Row className="pt-10">
-                        <Col xs={12} md={12} className="text-align-left">
-                            <div  className="font-size-sm">
-                                Name: 
-                                {this.state.student ? ' '+this.state.student.name : ''}
-                            </div>
-                        </Col>
-                        <Col xs={12} md={12} className="text-align-left">
-                            <div  className="font-size-sm">
-                                Age:  
-                                {this.state.student ? ' '+this.state.student.age : ''}
-                            </div>
-                        </Col>
-                        <Col xs={12} md={12} className="text-align-left">
-                            <div  className="font-size-sm">
-                                Address: 
-                                {this.state.student ? ' '+this.state.student.address : ''}
-                            </div>
-                        </Col>
-                        <Col xs={12} md={12} className="text-align-left">
-                            <div  className="font-size-sm">
-                                Phone Number: 
-                                {this.state.student ? ' '+this.state.student.phone : ''}
-                            </div>
-                        </Col>
-                    </Row>
-                </Container>
-                <Button onClick = {() => this.updateData()}>Update</Button>
-            </Container>
+            <div>
+                {this.state.student ? 
+                  <Container className="centerbody">
+                  <Row>
+                      <Col xs={12} md={12}  className="mt-5">
+                          <h2 className="bold">
+                              {this.state.student.name}
+                          </h2>
+                      </Col>
+                   </Row>
+                  <Container className="margins">
+                      <Row className="pt-10">
+                          <Col xs={12} md={12} className="text-align-left">
+                              <div  className="font-size-sm">
+                                  Name: 
+                                   {' '+this.state.student.name }
+                              </div>
+                          </Col>
+                          <Col xs={12} md={12} className="text-align-left">
+                              <div  className="font-size-sm">
+                                  Age:  
+                                  {' '+this.state.student.age}
+                              </div>
+                          </Col>
+                          <Col xs={12} md={12} className="text-align-left">
+                              <div  className="font-size-sm">
+                                  Address: 
+                                  {' '+this.state.student.address}
+                              </div>
+                          </Col>
+                          <Col xs={12} md={12} className="text-align-left">
+                              <div  className="font-size-sm">
+                                  Phone Number: 
+                                  {' '+this.state.student.phone}
+                              </div>
+                          </Col>
+                      </Row>
+                  </Container>
+                  <Button onClick = {() => this.routeToUpdatePage(this.state.student.id)}>Update</Button>
+              </Container>
+                : ''}
+            </div>
+          
         );
     }
 }
