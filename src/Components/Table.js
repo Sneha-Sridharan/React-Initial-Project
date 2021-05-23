@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
-import { students } from '../students';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -9,7 +8,7 @@ class StudentTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            studentsData: students
+            studentsData: JSON.parse(localStorage.getItem("allStudents"))
         };
     }
 
@@ -19,7 +18,7 @@ class StudentTable extends Component {
     }
 
     render() {
-        const students = this.state.studentsData.map((student) => {
+        const students = this.state.studentsData ? this.state.studentsData.map((student) => {
             return (
                 <tr onClick={() => this.routeToSingleStudentPage(student)}>
                     <td>{student.name}</td>
@@ -28,7 +27,7 @@ class StudentTable extends Component {
                     <td>{student.phone}</td>
                 </tr>
             );
-        });
+        }) : ''
 
         return (
             <Container className="centerbody">

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
-import { students } from '../students';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
@@ -10,7 +9,7 @@ class UpdateDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            studentsData: students,
+            studentsData: JSON.parse(localStorage.getItem("allStudents")),
             student: null,
             name: null,
             age: null,
@@ -23,13 +22,6 @@ class UpdateDetails extends Component {
     componentDidMount(){
         this.getData()
     }
-
-// localstorage.getItem
-// localstorage.setItem
-// localstorage.removeItem
-// JSON.stringfy()
-// JSON.parse()
-
 
     getData()
     {
@@ -52,14 +44,14 @@ class UpdateDetails extends Component {
     
     updateData()
     {
-        students[this.state.studentIndex] = {
+        this.state.studentsData[this.state.studentIndex] = {
             "id": this.state.id,
             "name": this.state.name,
             "age": this.state.age,
             "address": this.state.address,
             "phone": this.state.phone
         }
-        console.log(students[this.state.studentIndex])
+        localStorage.setItem('allStudents', JSON.stringify(this.state.studentsData));
     }
 
     routeToTablePage(){

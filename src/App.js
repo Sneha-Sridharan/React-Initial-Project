@@ -4,8 +4,14 @@ import StudentTable from './Components/Table';
 import SingleStudentDetails from './Components/SingleStudent';
 import UpdateDetails from './Components/Update';
 import { Route, HashRouter, Switch} from "react-router-dom";
+import { students } from './students';
 
 class App extends Component {
+
+  componentDidMount(){
+    localStorage.setItem('allStudents', JSON.stringify(students));
+  }
+
   render(){
     return(
         <div>

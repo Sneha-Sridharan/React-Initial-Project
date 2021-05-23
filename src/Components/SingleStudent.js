@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
-import { students } from '../students';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
@@ -9,7 +8,7 @@ class SingleStudentDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            studentsData: students,
+            studentsData: JSON.parse(localStorage.getItem("allStudents")),
             student: null,
         }
     }
@@ -17,14 +16,7 @@ class SingleStudentDetails extends Component {
     componentDidMount(){
         this.getData()
     }
-
-// localstorage.getItem
-// localstorage.setItem
-// localstorage.removeItem
-// JSON.stringfy()
-// JSON.parse()
-
-
+    
     getData()
     {
         const that = this;
